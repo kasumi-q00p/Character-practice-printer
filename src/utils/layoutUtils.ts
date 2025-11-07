@@ -58,7 +58,7 @@ export function calculateLineSpacing(fontSize: number, direction: WritingDirecti
   
   return direction === 'horizontal' 
     ? charSize.height * ratio 
-    : charSize.width * ratio
+    : charSize.height * ratio  // 縦書きでも文字の高さベースで行間を計算
 }
 
 /**
@@ -158,7 +158,8 @@ export function calculateVerticalCharPosition(
   const lineSpacing = calculateLineSpacing(fontSize, 'vertical')
   
   // 縦書きは右から左に行が進む
-  const x = A4_DIMENSIONS.WIDTH - MARGINS.RIGHT - lineIndex * lineSpacing - charSize.width
+  // 最初の行は右端から開始
+  const x = Math.max(MARGINS.LEFT, A4_DIMENSIONS.WIDTH - MARGINS.RIGHT - (lineIndex + 1) * lineSpacing)
   const y = MARGINS.TOP + charIndex * (charSize.height + charSpacing)
   
   return { x, y }

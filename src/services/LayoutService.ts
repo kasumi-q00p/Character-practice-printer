@@ -35,6 +35,10 @@ export class LayoutService {
     const linesPerPage = calculateLinesPerPage(fontSize, direction)
     const totalPages = calculateRequiredPages(characters.length, fontSize, direction)
     
+    // デバッグログ
+    console.log(`Layout calculation: direction=${direction}, fontSize=${fontSize}pt`)
+    console.log(`charsPerLine=${charsPerLine}, linesPerPage=${linesPerPage}, totalPages=${totalPages}`)
+    
     // ページごとにレイアウトを生成
     const pages: PageLayout[] = []
     
@@ -116,6 +120,11 @@ export class LayoutService {
         x: position.x,
         y: position.y
       })
+      
+      // デバッグログ（最初の数文字のみ）
+      if (charIndex < 3) {
+        console.log(`Char "${charData.char}" at line ${lineIndex}, pos ${charIndex}: x=${position.x.toFixed(1)}mm, y=${position.y.toFixed(1)}mm`)
+      }
     })
     
     return {
