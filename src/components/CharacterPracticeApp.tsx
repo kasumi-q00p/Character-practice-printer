@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Header } from './Header'
 import { InputPanel } from './InputPanel'
-import { PracticeSheetPreview } from './PracticeSheetPreview'
+import { PreviewPanel } from './PreviewPanel'
 import { PrintControls } from './PrintControls'
 import { useInputValidation } from '../hooks/useInputValidation'
+import { LayoutConfig } from '../types'
 
 const AppWrapper = styled.div`
   max-width: 1200px;
@@ -40,14 +41,21 @@ export const CharacterPracticeApp: React.FC = () => {
     setInputText,
     setWritingDirection,
     setFontSize,
-    setShowStrokeOrder,
-    isPracticeReady
+    setShowStrokeOrder
   } = useInputValidation({
     initialFontSize: 24,
     initialDirection: 'horizontal',
     enableRealTimeValidation: true,
     enableAutoSanitization: true
   })
+
+  // レイアウト設定
+  const layoutConfig: LayoutConfig = {
+    direction: writingDirection,
+    fontSize,
+    showStrokeOrder,
+    pageSize: 'A4'
+  }
 
   return (
     <AppWrapper>
@@ -67,7 +75,12 @@ export const CharacterPracticeApp: React.FC = () => {
           />
           <PrintControls />
         </LeftPanel>
-        <PracticeSheetPreview />
+        <PreviewPanel
+          inputText={inputText}
+          layoutConfig={layoutConfig}
+          validationResult={validationResult}
+          showStrokeOrder={showStrokeOrder}
+        />
       </MainContent>
     </AppWrapper>
   )

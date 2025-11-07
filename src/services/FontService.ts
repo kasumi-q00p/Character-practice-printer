@@ -215,7 +215,7 @@ export class FontService {
   /**
    * 文字に最適なフォントウェイトを取得
    */
-  getOptimalFontWeight(characterType: CharacterType, fontSize: number): number {
+  getOptimalFontWeight(_characterType: CharacterType, fontSize: number): number {
     // 小さいフォントサイズでは細いウェイト、大きいサイズでは標準ウェイト
     if (fontSize <= 16) {
       return 300 // Light
