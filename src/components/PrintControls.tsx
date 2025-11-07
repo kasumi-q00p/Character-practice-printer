@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { PrintService, PrintOptions } from '../services/PrintService'
 import { LayoutConfig } from '../types'
-import { getRecommendedPrintSettings, estimatePrintTime, estimatePrintCost } from '../utils/printOptimization'
+import { getRecommendedPrintSettings } from '../utils/printOptimization'
 
 const ControlsContainer = styled.div`
   background: white;
@@ -179,11 +179,6 @@ export const PrintControls: React.FC<PrintControlsProps> = ({
   // プリンター種別
   const [printerType, setPrinterType] = useState<'inkjet' | 'laser' | 'auto'>('auto')
   
-  // 推定情報
-  const timeEstimation = estimatePrintTime(totalPages, layoutConfig, 
-    printerType === 'auto' ? 'unknown' : printerType)
-  const costEstimation = estimatePrintCost(totalPages)
-  
   const canPrint = inputText.trim().length > 0 && totalPages > 0 && !isLoading
 
   const handlePrint = async () => {
@@ -296,14 +291,6 @@ export const PrintControls: React.FC<PrintControlsProps> = ({
           <EstimationItem>
             <span>印刷ページ数:</span>
             <span>{totalPages}ページ</span>
-          </EstimationItem>
-          <EstimationItem>
-            <span>推定印刷時間:</span>
-            <span>{timeEstimation.estimatedMinutes}分</span>
-          </EstimationItem>
-          <EstimationItem>
-            <span>推定コスト:</span>
-            <span>{costEstimation.totalCost}{costEstimation.currency}</span>
           </EstimationItem>
         </EstimationInfo>
       )}
