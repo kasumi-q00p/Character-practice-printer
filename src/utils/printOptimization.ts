@@ -107,7 +107,7 @@ export function optimizePageBreaks(
 /**
  * 最後のページを最適化
  */
-function optimizeLastPage(page: PageLayout, _layoutConfig: LayoutConfig): PageLayout {
+function optimizeLastPage(page: PageLayout, layoutConfig: LayoutConfig): PageLayout {
   // 最後のページの文字配置を中央寄せまたは均等配置
   const maxLines = getMaxLinesPerPage(layoutConfig)
   const currentLines = page.lines.length
@@ -123,7 +123,7 @@ function optimizeLastPage(page: PageLayout, _layoutConfig: LayoutConfig): PageLa
 /**
  * ページの文字を中央寄せ
  */
-function centerAlignPage(page: PageLayout, _layoutConfig: LayoutConfig): PageLayout {
+function centerAlignPage(page: PageLayout, layoutConfig: LayoutConfig): PageLayout {
   const printableHeight = A4_DIMENSIONS.HEIGHT - MARGINS.TOP - MARGINS.BOTTOM
   const lineHeight = ptToMm(layoutConfig.fontSize * 1.5)
   const totalContentHeight = page.lines.length * lineHeight
@@ -155,7 +155,7 @@ function getMaxLinesPerPage(layoutConfig: LayoutConfig): number {
  * 印刷品質を最適化するCSSを生成
  */
 export function generateQualityOptimizedCSS(
-  layoutConfig: LayoutConfig,
+  _layoutConfig: LayoutConfig,
   options: PrintOptimizationOptions = {}
 ): string {
   const {
@@ -230,7 +230,7 @@ export function generateQualityOptimizedCSS(
  * 印刷プレビュー用の最適化設定を取得
  */
 export function getPreviewOptimizationSettings(
-  layoutConfig: LayoutConfig
+  _layoutConfig: LayoutConfig
 ): PrintOptimizationOptions {
   return {
     adjustMargins: true,
