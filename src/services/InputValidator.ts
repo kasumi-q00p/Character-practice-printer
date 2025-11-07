@@ -20,13 +20,7 @@ export class InputValidator {
     kanji: /[\u4E00-\u9FAF]/
   }
   
-  // 完全に許可される文字パターン（組み合わせ）
-  private static readonly VALID_CHARACTER_PATTERN = new RegExp(
-    `[${Object.values(InputValidator.ALLOWED_PATTERNS)
-      .map(pattern => pattern.source.slice(1, -1))
-      .join('')}]`,
-    'g'
-  )
+
 
   /**
    * 入力テキストの包括的な検証を実行
@@ -73,7 +67,8 @@ export class InputValidator {
    */
   static filterInput(text: string): string {
     // 許可された文字のみを抽出
-    const filteredText = text.match(this.VALID_CHARACTER_PATTERN)?.join('') || ''
+    const filteredChars = Array.from(text).filter(char => this.isValidCharacter(char))
+    const filteredText = filteredChars.join('')
     
     // 文字数制限を適用
     return filteredText.slice(0, this.MAX_CHARACTER_LIMIT)
@@ -100,7 +95,8 @@ export class InputValidator {
    * 単一文字が有効かどうかをチェック
    */
   static isValidCharacter(char: string): boolean {
-    return this.VALID_CHARACTER_PATTERN.test(char)
+    // 各パターンを個別にテスト
+    return Object.values(this.ALLOWED_PATTERNS).some(pattern => pattern.test(char))
   }
 
   /**
