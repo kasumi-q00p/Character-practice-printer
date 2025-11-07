@@ -24,7 +24,7 @@ const SheetContainer = styled.div<SheetContainerProps>`
   width: ${mmToPx(A4_DIMENSIONS.WIDTH)}px;
   height: ${mmToPx(A4_DIMENSIONS.HEIGHT)}px;
   background: white;
-  overflow: hidden;
+  overflow: visible;
   
   /* 印刷時の設定 */
   @media print {
@@ -48,10 +48,10 @@ const SheetContainer = styled.div<SheetContainerProps>`
 
 const ContentArea = styled.div`
   position: absolute;
-  left: ${mmToPx(MARGINS.LEFT)}px;
-  top: ${mmToPx(MARGINS.TOP)}px;
-  width: ${mmToPx(A4_DIMENSIONS.WIDTH - MARGINS.LEFT - MARGINS.RIGHT)}px;
-  height: ${mmToPx(A4_DIMENSIONS.HEIGHT - MARGINS.TOP - MARGINS.BOTTOM)}px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   
   @media print {
     left: 0 !important;
