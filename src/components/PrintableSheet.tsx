@@ -5,7 +5,7 @@ import { CharacterGrid } from './Character'
 import { StrokeOrderService } from '../services/StrokeOrderService'
 import { FontService } from '../services/FontService'
 import { mmToPx } from '../utils/layoutUtils'
-import { A4_DIMENSIONS, MARGINS } from '../constants/layout'
+import { A4_DIMENSIONS } from '../constants/layout'
 
 export interface PrintableSheetProps {
   page: PageLayout
