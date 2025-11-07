@@ -23,6 +23,16 @@ const PreviewContainer = styled.div`
   flex-direction: column;
   height: 100%;
   min-height: 500px;
+  
+  @media (max-width: 968px) {
+    order: 1;
+    min-height: 400px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
+    min-height: 300px;
+  }
 `
 
 const PreviewHeader = styled.div`
@@ -45,6 +55,16 @@ const PreviewInfo = styled.div`
   gap: 16px;
   font-size: 0.9rem;
   color: #666;
+  
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 4px;
+  }
 `
 
 const InfoItem = styled.span`

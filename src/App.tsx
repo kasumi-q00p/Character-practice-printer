@@ -7,6 +7,8 @@ import { CharacterPracticeApp } from './components/CharacterPracticeApp'
 import { FontService } from './services/FontService'
 import { LoadingSpinner } from './components/LoadingSpinner'
 import './styles/print.css'
+import './styles/responsive.css'
+import './styles/accessibility.css'
 
 const AppContainer = styled.div`
   width: 100%;

@@ -18,11 +18,21 @@ const AppWrapper = styled.div`
 
 const MainContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 400px 1fr;
   gap: 20px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    grid-template-columns: 350px 1fr;
+    gap: 16px;
+  }
+  
+  @media (max-width: 968px) {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 12px;
   }
 `
 
@@ -30,6 +40,14 @@ const LeftPanel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
+  @media (max-width: 968px) {
+    order: 2;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
 `
 
 export const CharacterPracticeApp: React.FC = () => {

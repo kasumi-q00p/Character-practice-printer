@@ -1,0 +1,282 @@
+/**
+ * アクセシビリティ対応のスタイル
+ */
+
+/* スクリーンリーダー専用テキスト */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* キーボードユーザー向けのフォーカススタイル */
+.keyboard-user *:focus {
+  outline: 2px solid #4CAF50 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2) !important;
+}
+
+/* マウスユーザーの場合はフォーカスアウトラインを非表示 */
+:not(.keyboard-user) *:focus {
+  outline: none !important;
+}
+
+/* 高コントラストモード */
+@media (prefers-contrast: high) {
+  :root {
+    --text-color: #000000;
+    --bg-color: #ffffff;
+    --border-color: #000000;
+    --accent-color: #0066cc;
+  }
+  
+  * {
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+  }
+  
+  .practice-character {
+    color: #333333 !important;
+    font-weight: 500 !important;
+  }
+  
+  button {
+    border: 2px solid var(--border-color) !important;
+    background: var(--bg-color) !important;
+    color: var(--text-color) !important;
+  }
+  
+  button:hover,
+  button:focus {
+    background: var(--accent-color) !important;
+    color: var(--bg-color) !important;
+  }
+}
+
+/* 動きを減らす設定 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* ローディングスピナーは例外 */
+  .loading-spinner {
+    animation-duration: 1s !important;
+  }
+}
+
+/* 大きなフォントサイズ対応 */
+.font-large {
+  font-size: 1.125rem !important;
+}
+
+.font-extra-large {
+  font-size: 1.25rem !important;
+}
+
+/* 色覚異常対応 */
+.colorblind-friendly {
+  /* 色だけでなく形やパターンでも情報を伝える */
+}
+
+.success-indicator::before {
+  content: "✓ ";
+  color: #4CAF50;
+}
+
+.error-indicator::before {
+  content: "✕ ";
+  color: #f44336;
+}
+
+.warning-indicator::before {
+  content: "⚠ ";
+  color: #ff9800;
+}
+
+.info-indicator::before {
+  content: "ℹ ";
+  color: #2196f3;
+}
+
+/* タッチターゲットのサイズ確保 */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  input,
+  select,
+  textarea,
+  .clickable {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  /* チェックボックスとラジオボタン */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  /* スライダー */
+  input[type="range"]::-webkit-slider-thumb {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* フォーカス管理 */
+.focus-trap {
+  /* フォーカストラップが有効な要素 */
+}
+
+/* スキップリンク */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000000;
+  color: #ffffff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ライブリージョン */
+.live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.error-message::before {
+  content: "エラー: ";
+  font-weight: bold;
+}
+
+/* 必須フィールドの表示 */
+.required::after {
+  content: " *";
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* フォームのラベルとフィールドの関連付け */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* 無効な状態の表示 */
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+}
+
+/* 有効な状態の表示 */
+input:valid,
+textarea:valid,
+select:valid {
+  border-color: #4CAF50;
+}
+
+/* プログレスバーのアクセシビリティ */
+.progress-bar {
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: attr(aria-valuenow) "%";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ツールチップのアクセシビリティ */
+.tooltip {
+  position: relative;
+}
+
+.tooltip[aria-describedby] {
+  cursor: help;
+}
+
+/* モーダルダイアログ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 印刷時のアクセシビリティ */
+@media print {
+  .sr-only {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+  
+  /* 重要な情報を印刷時に表示 */
+  .print-important {
+    display: block !important;
+  }
+}

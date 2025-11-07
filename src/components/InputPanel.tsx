@@ -97,6 +97,11 @@ const SettingLabel = styled.label`
 const DirectionSelector = styled.div`
   display: flex;
   gap: 12px;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `
 
 const DirectionButton = styled.button<{ isActive: boolean }>`
@@ -108,10 +113,16 @@ const DirectionButton = styled.button<{ isActive: boolean }>`
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  flex: 1;
   
   &:hover {
     border-color: #4CAF50;
     background: ${props => props.isActive ? '#45a049' : '#f8f8f8'};
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px 16px;
+    font-size: 1rem;
   }
 `
 
@@ -226,25 +237,28 @@ export const InputPanel: React.FC<InputPanelProps> = ({
           onChange={handleTextChange}
           placeholder="ひらがな、カタカナ、アルファベットを入力してください..."
           hasError={hasValidationErrors || isOverLimit}
+          aria-label="練習したい文字を入力"
+          aria-describedby="input-info input-errors"
+          aria-invalid={hasValidationErrors || isOverLimit}
         />
         
-        <InputInfo>
+        <InputInfo id="input-info">
           <span>
             {validationResult?.primaryType && `文字種: ${getCharacterTypeLabel(validationResult.primaryType)}`}
           </span>
-          <CharacterCount isOverLimit={isOverLimit}>
+          <CharacterCount isOverLimit={isOverLimit} aria-live="polite">
             {inputText.length} / {MAX_CHARACTER_LIMIT} 文字
           </CharacterCount>
         </InputInfo>
         
         {hasValidationErrors && (
-          <ErrorMessage>
+          <ErrorMessage id="input-errors" role="alert" aria-live="assertive">
             {validationResult?.errors.join(', ')}
           </ErrorMessage>
         )}
         
         {isOverLimit && (
-          <ErrorMessage>
+          <ErrorMessage role="alert" aria-live="assertive">
             文字数が上限を超えています。{MAX_CHARACTER_LIMIT}文字以内で入力してください。
           </ErrorMessage>
         )}
@@ -253,16 +267,22 @@ export const InputPanel: React.FC<InputPanelProps> = ({
       <SettingsSection>
         <SettingGroup>
           <SettingLabel>書字方向</SettingLabel>
-          <DirectionSelector>
+          <DirectionSelector role="radiogroup" aria-label="書字方向">
             <DirectionButton
               isActive={writingDirection === 'horizontal'}
               onClick={() => handleDirectionChange('horizontal')}
+              role="radio"
+              aria-checked={writingDirection === 'horizontal'}
+              aria-label="横書き"
             >
               横書き
             </DirectionButton>
             <DirectionButton
               isActive={writingDirection === 'vertical'}
               onClick={() => handleDirectionChange('vertical')}
+              role="radio"
+              aria-checked={writingDirection === 'vertical'}
+              aria-label="縦書き"
             >
               縦書き
             </DirectionButton>
@@ -281,6 +301,11 @@ export const InputPanel: React.FC<InputPanelProps> = ({
                 max={FONT_SIZES.length - 1}
                 value={currentFontSizeIndex}
                 onChange={handleFontSizeChange}
+                aria-label="文字サイズ"
+                aria-valuemin={FONT_SIZES[0]}
+                aria-valuemax={FONT_SIZES[FONT_SIZES.length - 1]}
+                aria-valuenow={fontSize}
+                aria-valuetext={`${fontSize}ポイント`}
               />
               <span>大</span>
               <FontSizeDisplay>{fontSize}pt</FontSizeDisplay>

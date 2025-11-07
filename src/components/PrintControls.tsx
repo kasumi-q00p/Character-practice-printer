@@ -46,6 +46,11 @@ const ButtonGroup = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 20px;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `
 
 const Button = styled.button<{ disabled?: boolean }>`
