@@ -5,6 +5,7 @@ import { InputPanel } from './InputPanel'
 import { PreviewPanel } from './PreviewPanel'
 import { PrintControls } from './PrintControls'
 import { useInputValidation } from '../hooks/useInputValidation'
+import { useNotificationHelpers } from './NotificationSystem'
 import { LayoutConfig } from '../types'
 
 const AppWrapper = styled.div`
@@ -49,6 +50,8 @@ export const CharacterPracticeApp: React.FC = () => {
     enableAutoSanitization: true
   })
 
+  const { notifyPrintSuccess, notifyPrintError } = useNotificationHelpers()
+
   // レイアウト設定
   const layoutConfig: LayoutConfig = {
     direction: writingDirection,
@@ -63,11 +66,11 @@ export const CharacterPracticeApp: React.FC = () => {
       (Math.floor(180 / (fontSize * 0.4)) * Math.floor(257 / (fontSize * 0.5)))) : 0
 
   const handlePrintSuccess = () => {
-    console.log('印刷が正常に完了しました')
+    notifyPrintSuccess()
   }
 
   const handlePrintError = (error: string) => {
-    console.error('印刷エラー:', error)
+    notifyPrintError(error)
   }
 
   return (
