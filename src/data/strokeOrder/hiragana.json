@@ -1,0 +1,177 @@
+{
+  "あ": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M20,10 Q30,5 40,15 Q35,25 30,35",
+        "position": { "x": 5, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M15,20 L45,20",
+        "position": { "x": 35, "y": 15 }
+      },
+      {
+        "order": 3,
+        "path": "M35,25 Q40,35 35,45 Q25,40 30,30",
+        "position": { "x": 25, "y": 35 }
+      }
+    ]
+  },
+  "い": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M20,10 L20,45",
+        "position": { "x": 15, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M35,15 Q40,25 35,35 Q30,40 25,35",
+        "position": { "x": 30, "y": 10 }
+      }
+    ]
+  },
+  "う": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 Q25,10 35,15",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M20,25 Q30,20 40,25 Q35,35 25,40 Q15,35 20,25",
+        "position": { "x": 35, "y": 20 }
+      }
+    ]
+  },
+  "え": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 Q25,10 35,15 Q30,20 25,25 Q20,20 15,15",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M20,30 L40,30 Q35,40 25,35",
+        "position": { "x": 35, "y": 25 }
+      }
+    ]
+  },
+  "お": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 L35,15",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M25,10 L25,25 Q30,30 35,25",
+        "position": { "x": 30, "y": 5 }
+      },
+      {
+        "order": 3,
+        "path": "M15,35 Q25,30 35,35 Q30,45 20,40",
+        "position": { "x": 25, "y": 30 }
+      }
+    ]
+  },
+  "か": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,10 L15,40",
+        "position": { "x": 10, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M20,15 L35,15 L35,25",
+        "position": { "x": 30, "y": 10 }
+      },
+      {
+        "order": 3,
+        "path": "M20,30 Q30,25 40,30 Q35,40 25,35",
+        "position": { "x": 35, "y": 25 }
+      }
+    ]
+  },
+  "き": {
+    "totalStrokes": 4,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 L35,15",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M25,10 L25,25",
+        "position": { "x": 20, "y": 5 }
+      },
+      {
+        "order": 3,
+        "path": "M15,30 L35,30",
+        "position": { "x": 30, "y": 25 }
+      },
+      {
+        "order": 4,
+        "path": "M35,25 Q40,35 35,45",
+        "position": { "x": 30, "y": 40 }
+      }
+    ]
+  },
+  "く": {
+    "totalStrokes": 1,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M35,15 Q25,25 35,35",
+        "position": { "x": 20, "y": 20 }
+      }
+    ]
+  },
+  "け": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 L35,15",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M25,10 L25,35",
+        "position": { "x": 20, "y": 5 }
+      },
+      {
+        "order": 3,
+        "path": "M35,20 Q40,30 35,40",
+        "position": { "x": 30, "y": 35 }
+      }
+    ]
+  },
+  "こ": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,20 L35,20",
+        "position": { "x": 10, "y": 15 }
+      },
+      {
+        "order": 2,
+        "path": "M15,35 L35,35",
+        "position": { "x": 30, "y": 30 }
+      }
+    ]
+  }
+}

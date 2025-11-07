@@ -1,0 +1,122 @@
+{
+  "A": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,40 L25,10 L35,40",
+        "position": { "x": 10, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M20,25 L30,25",
+        "position": { "x": 25, "y": 20 }
+      }
+    ]
+  },
+  "B": {
+    "totalStrokes": 3,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,10 L15,40",
+        "position": { "x": 10, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M15,10 Q25,10 25,17.5 Q25,25 15,25",
+        "position": { "x": 20, "y": 15 }
+      },
+      {
+        "order": 3,
+        "path": "M15,25 Q30,25 30,32.5 Q30,40 15,40",
+        "position": { "x": 25, "y": 30 }
+      }
+    ]
+  },
+  "C": {
+    "totalStrokes": 1,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M35,15 Q15,15 15,25 Q15,35 35,35",
+        "position": { "x": 20, "y": 20 }
+      }
+    ]
+  },
+  "a": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M30,20 Q20,15 15,25 Q20,35 30,30",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M30,20 L30,35 Q25,40 20,35",
+        "position": { "x": 25, "y": 30 }
+      }
+    ]
+  },
+  "b": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,10 L15,40",
+        "position": { "x": 10, "y": 5 }
+      },
+      {
+        "order": 2,
+        "path": "M15,20 Q25,15 30,25 Q25,35 15,30",
+        "position": { "x": 25, "y": 20 }
+      }
+    ]
+  },
+  "c": {
+    "totalStrokes": 1,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M30,20 Q20,15 15,25 Q20,35 30,30",
+        "position": { "x": 20, "y": 20 }
+      }
+    ]
+  },
+  "1": {
+    "totalStrokes": 1,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M20,15 L25,10 L25,40 M15,40 L35,40",
+        "position": { "x": 20, "y": 20 }
+      }
+    ]
+  },
+  "2": {
+    "totalStrokes": 1,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 Q25,10 35,15 Q30,25 15,40 L35,40",
+        "position": { "x": 20, "y": 20 }
+      }
+    ]
+  },
+  "3": {
+    "totalStrokes": 2,
+    "strokes": [
+      {
+        "order": 1,
+        "path": "M15,15 Q25,10 35,15 Q25,20 25,25",
+        "position": { "x": 10, "y": 10 }
+      },
+      {
+        "order": 2,
+        "path": "M25,25 Q35,30 35,35 Q25,40 15,35",
+        "position": { "x": 30, "y": 30 }
+      }
+    ]
+  }
+}
