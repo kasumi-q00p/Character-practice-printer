@@ -35,10 +35,6 @@ export class LayoutService {
     const linesPerPage = calculateLinesPerPage(fontSize, direction)
     const totalPages = calculateRequiredPages(characters.length, fontSize, direction)
     
-    // デバッグログ
-    console.log(`Layout calculation: direction=${direction}, fontSize=${fontSize}pt`)
-    console.log(`charsPerLine=${charsPerLine}, linesPerPage=${linesPerPage}, totalPages=${totalPages}`)
-    
     // ページごとにレイアウトを生成
     const pages: PageLayout[] = []
     
@@ -77,25 +73,39 @@ export class LayoutService {
     const pageCharacters = characters.slice(startIndex, endIndex)
     
     const lines: LineLayout[] = []
+    let currentLineIndex = 0
+    let charIndex = 0
     
-    // 行ごとに文字を配置
-    for (let lineIndex = 0; lineIndex < linesPerPage; lineIndex++) {
-      const lineStartIndex = lineIndex * charsPerLine
-      const lineEndIndex = Math.min(lineStartIndex + charsPerLine, pageCharacters.length)
+    // 改行を考慮して行ごとに文字を配置
+    while (charIndex < pageCharacters.length && currentLineIndex < linesPerPage) {
+      const lineCharacters: CharacterData[] = []
       
-      if (lineStartIndex >= pageCharacters.length) {
-        break // このページに配置する文字がもうない
+      // 1行分の文字を収集（改行または行の最大文字数まで）
+      while (lineCharacters.length < charsPerLine && charIndex < pageCharacters.length) {
+        const char = pageCharacters[charIndex]
+        
+        // 改行文字の場合は次の行へ
+        if (char.char === '\n') {
+          charIndex++
+          break
+        }
+        
+        lineCharacters.push(char)
+        charIndex++
       }
       
-      const lineCharacters = pageCharacters.slice(lineStartIndex, lineEndIndex)
-      const lineLayout = this.calculateLineLayout(
-        lineCharacters,
-        lineIndex,
-        fontSize,
-        direction
-      )
+      // 文字がある場合のみ行を追加
+      if (lineCharacters.length > 0) {
+        const lineLayout = this.calculateLineLayout(
+          lineCharacters,
+          currentLineIndex,
+          fontSize,
+          direction
+        )
+        lines.push(lineLayout)
+      }
       
-      lines.push(lineLayout)
+      currentLineIndex++
     }
     
     return { lines }
@@ -120,11 +130,6 @@ export class LayoutService {
         x: position.x,
         y: position.y
       })
-      
-      // デバッグログ（最初の数文字のみ）
-      if (charIndex < 3) {
-        console.log(`Char "${charData.char}" at line ${lineIndex}, pos ${charIndex}: x=${position.x.toFixed(1)}mm, y=${position.y.toFixed(1)}mm`)
-      }
     })
     
     return {
@@ -192,7 +197,7 @@ export class LayoutService {
   static textToCharacterData(text: string): CharacterData[] {
     return Array.from(text).map(char => ({
       char,
-      type: this.determineCharacterType(char)
+      type: char === '\n' ? 'symbol' : this.determineCharacterType(char)
     }))
   }
 

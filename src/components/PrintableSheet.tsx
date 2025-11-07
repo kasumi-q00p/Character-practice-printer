@@ -24,7 +24,7 @@ const SheetContainer = styled.div<SheetContainerProps>`
   width: ${mmToPx(A4_DIMENSIONS.WIDTH)}px;
   height: ${mmToPx(A4_DIMENSIONS.HEIGHT)}px;
   background: white;
-  overflow: visible;
+  overflow: hidden;
   
   /* 印刷時の設定 */
   @media print {

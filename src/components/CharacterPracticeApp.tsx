@@ -78,9 +78,9 @@ export const CharacterPracticeApp: React.FC = () => {
     pageSize: 'A4'
   }
 
-  // 総ページ数を計算
+  // 総ページ数を計算（改行を除く）
   const totalPages = inputText.trim() ? 
-    Math.ceil(inputText.replace(/\s/g, '').length / 
+    Math.ceil(inputText.replace(/[\s\n]/g, '').length / 
       (Math.floor(180 / (fontSize * 0.4)) * Math.floor(257 / (fontSize * 0.5)))) : 0
 
   const handlePrintSuccess = () => {

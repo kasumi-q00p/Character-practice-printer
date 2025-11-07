@@ -32,11 +32,6 @@ const CharacterContainer = styled.div<StyledCharacterProps>`
   writing-mode: ${props => props.$writingDirection === 'vertical' ? 'vertical-rl' : 'horizontal-tb'};
   text-orientation: ${props => props.$writingDirection === 'vertical' ? 'upright' : 'mixed'};
   
-  /* デバッグ用 - 文字の境界を表示 */
-  ${props => props.$isPreview && `
-    outline: 1px dashed rgba(255, 0, 0, 0.2);
-  `}
-  
   /* 印刷時のスタイル */
   @media print {
     color: #ddd !important;

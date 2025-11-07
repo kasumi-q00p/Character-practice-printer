@@ -220,7 +220,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
   const previewInfo = useMemo(() => {
     if (!layoutResult) return null
     
-    const totalCharacters = inputText.replace(/\s/g, '').length
+    const totalCharacters = inputText.replace(/[\s\n]/g, '').length
     const { charsPerLine, linesPerPage, charsPerPage } = LayoutService.getLayoutPreview(
       totalCharacters,
       layoutConfig
